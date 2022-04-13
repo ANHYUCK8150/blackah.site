@@ -105,6 +105,6 @@
 	</select>
 	
 	<select id="skillList" resultType="com.blackah.site.vo.SkillVO">
-		select * from skillList
+		select * from skilllist
 	</select>
 </mapper>
