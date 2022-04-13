@@ -22,7 +22,7 @@
                                 <p><i class="fas fa-envelope"></i>Email: <a href="mailto:blackah@nate.com" class="btn_email">blackah@nate.com</a></p>
                             </li>
                         </ul>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-link-contact">
