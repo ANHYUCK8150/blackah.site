@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadClass {
-	private static final String PREFIX_URL ="resources/upload/";
+	private static final String PREFIX_URL ="upload/";
 	
 	public String restore(MultipartFile multipartFile, HttpServletRequest request) {
 		String url = null;
