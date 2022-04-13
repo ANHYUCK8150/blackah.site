@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
 			<div class="col-lg-4">
-                <div class="banner-frame"> <img class="img-fluid" src="${path}/resources/images/intro.jpg" alt="" />
+                <div class="banner-frame"> <img class="img-fluid" src="${path}/images/intro.jpg" alt="" />
                 </div>
             </div>
             <div class="col-lg-8">
@@ -31,7 +31,7 @@
 					   감사합니다.
 				</p>
 				<p style="font-size:1rem;">
-					Github : <a style="color:#2626db;" href="https://github.com/ANHYUCK8150/Project.git" target="__blank">https://github.com/ANHYUCK8150/Project.git</a>
+					Github : <a style="color:#2626db;" href="https://github.com/ANHYUCK8150/blackah.site.git" target="__blank">https://github.com/ANHYUCK8150/blackah.site.git</a>
 				</p>
             </div>
         </div>

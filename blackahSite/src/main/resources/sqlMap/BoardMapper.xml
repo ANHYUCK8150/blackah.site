@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackah.site.service.dao.BoardDao">
+	<select id="listCnt" resultType="string">
+		select
+			count(*)
+		from
+			qboard
+		where 1=1
+			<if test="searchText != null">
+				<choose>
+					<when test="searchOption == 1">
+						and qbSubject like concat('%',#{searchText},'%')
+					</when>
+					<when test="searchOption == 2">
+						and qbContent like concat('%',#{searchText},'%')
+					</when>
+					<otherwise>
+						and qbOwner like concat('%',#{searchText},'%')
+					</otherwise>
+				</choose>
+			</if>
+			<if test="boardOption != null">
+				and qbOption = #{boardOption}
+			</if>
+	</select>
+	
+	<select id="list" resultType="com.blackah.site.vo.BoardVO">
+		select
+			*
+		from (
+			select
+				@ROWNUM := @ROWNUM + 1 AS rowNum
+				,q.qbIdx
+				,q.qbOption
+				,q.qbNo
+				,q.qbSubject
+				,q.qbContent
+				,q.qbCnt
+				,date_format(q.qbRegDT,'%Y-%m-%d') as qbRegDT
+				,q.qbOwner
+				,q.qbID
+				,q.qbPW 
+				<choose>
+					<when test="boardOption == 'qna'">
+						,if((select count(*) from qboard_reply where qbrParent = q.qbIdx) > 0,'완료','대기') as qbState
+					</when>
+					<otherwise>
+						,'' as qbState
+					</otherwise>
+				</choose>
+			from 
+				qboard q, (SELECT @ROWNUM := 0 ) TMP
+			where 1=1
+			<if test="searchText != null">
+				<choose>
+					<when test="searchOption == 1">
+						and qbSubject like concat('%',#{searchText},'%')
+					</when>
+					<when test="searchOption == 2">
+						and qbContent like concat('%',#{searchText},'%')
+					</when>
+					<otherwise>
+						and qbOwner like concat('%',#{searchText},'%')
+					</otherwise>
+				</choose>
+			</if>
+			<choose>
+				<when test="boardOption != null">
+					and qbOption = #{boardOption}
+					order by qbNo desc
+				</when>
+				<otherwise>
+					order by qbIdx DESC
+				</otherwise>
+			</choose>
+		) a
+		where
+			rowNum between #{start} and #{end}
+		<choose>
+			<when test="boardOption != null">
+				order by qbNo desc
+			</when>
+			<otherwise>
+				order by qbRegDT desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="listOne" resultType="com.blackah.site.vo.BoardVO">
+		select
+			*
+		from
+			qboard
+		where 1=1
+			and qbIdx = #{qbIdx}
+	</select>
+	
+	<select id="childList" resultType="com.blackah.site.vo.BoardReplyVO">
+		select
+			*
+		from
+			qboard_reply
+		where 1=1
+			and qbrParent = #{qbIdx}
+	</select>
+	
+	<select id="boardPWchk" resultType="string">
+		select
+			count(*)
+		from
+			qboard
+		where 1=1
+			and qbIdx = #{qbIdx}
+			and qbPW = #{qbPW}
+	</select>
+	
+	<insert id="insert">
+		insert into qboard set
+			qbNo = (select ifnull(max(b.qbNo),0) + 1 from qboard b where qbOption = #{qbOption})
+			,qbOption = #{qbOption}
+			,qbSubject = #{qbSubject}
+			,qbContent = #{qbContent}
+			,qbCnt = 0
+			,qbRegDT = now()
+			,qbOwner = #{qbOwner}
+			,qbID = #{qbID}
+			,qbPW = #{qbPW}
+	</insert>
+	
+	<insert id="insertReply">
+		insert into qboard_reply set
+			qbrParent = #{qbIdx}
+			,qbrContent = #{qbContent}
+			,qbrRegDT = now()
+			,qbrOwner = #{qbOwner}
+	</insert>
+	
+	<update id="SetCntUP">
+		update qboard set
+			qbCnt = qbCnt + 1
+		where 1=1
+			and qbIdx = #{qbIdx}
+	</update>
+	
+	<update id="update">
+		update qboard set
+			qbSubject = #{qbSubject}
+			,qbContent = #{qbContent}
+		where 1=1
+			and qbIdx = #{qbIdx}
+	</update>
+</mapper>

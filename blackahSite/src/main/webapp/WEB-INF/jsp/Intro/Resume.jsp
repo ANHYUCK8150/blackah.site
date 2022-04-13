@@ -52,7 +52,7 @@
 								<tbody>
 									<tr>
 										<td rowspan="6">
-											<img src="${path}/resources/images/AnHyuck.jpg" width="160" height="240" />
+											<img src="${path}/images/AnHyuck.jpg" width="160" height="240" />
 										</td>
 										<th rowspan="3">성  명</th>
 										<td>안혁</td>

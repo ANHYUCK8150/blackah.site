@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackah.site.service.dao.ProjectDao">
+	<select id="listCnt" resultType="string">
+		select
+			count(pbIdx)
+		from 
+			pboard
+		where 1=1
+			<if test="searchSkill[0] != 'ALL'">
+				and
+				<foreach item="arr1" collection="searchSkill" open="(" separator=" or " close=")">
+					 pbSkill like concat('%',#{arr1},'%')
+			  	</foreach>
+			</if>
+			<if test="searchWork[0] != 'ALL'">
+				and
+				<foreach item="arr2" collection="searchWork" open="(" separator=" or " close=")">
+					 pbWork like concat('%',#{arr2},'%')
+			  	</foreach>
+			</if>
+			
+		  	<if test="searchText != null">
+		  		and pbSubject like CONCAT('%',#{searchText},'%')
+		  	</if>
+	</select>
+	
+	<select id="list" resultType="com.blackah.site.vo.ProjectVO">
+		select
+			*, replace(replace(pbSkill,',',' '),'C#','CS') AS pbListClass
+		from (
+			select
+				@ROWNUM := @ROWNUM + 1 AS pno
+				, p.*
+			from 
+				pboard p, (SELECT @ROWNUM := 0 ) TMP
+			where 1=1
+			<if test="searchSkill[0] != 'ALL'">
+				and
+				<foreach item="arr1" collection="searchSkill" open="(" separator=" or " close=")">
+					 pbSkill like concat('%',#{arr1},'%')
+			  	</foreach>
+			</if>
+			
+			<if test="searchWork[0] != 'ALL'">
+				and
+				<foreach item="arr2" collection="searchWork" open="(" separator=" or " close=")">
+					 pbWork like concat('%',#{arr2},'%')
+			  	</foreach>
+			</if>
+			
+		  	<if test="searchText != null">
+		  		and pbSubject like CONCAT('%',#{searchText},'%')
+		  	</if>
+			order by pbStartDT desc
+		) a
+		where
+			pno between #{start} and #{end}
+		order by pno
+	</select>
+	
+	<insert id="insert">
+		insert into pboard set
+			pbSkill = #{pbSkill}
+			,pbWork = #{pbWork}
+			,pbSubject = #{pbSubject}
+			,pbContent = #{pbContent}
+			,pbStartDT = #{pbStartDT}
+			,pbEndDT = #{pbEndDT}
+			,pbImage = #{pbImage}
+			,pbRegDT = now()
+	</insert>
+	
+	<update id="update">
+		update pboard set
+			pbSkill = #{pbSkill}
+			,pbWork = #{pbWork}
+			,pbSubject = #{pbSubject}
+			,pbContent = #{pbContent}
+			,pbStartDT = #{pbStartDT}
+			,pbEndDT = #{pbEndDT}
+			<if test="pbImage != 'UPDATE'">
+				,pbImage = #{pbImage}			
+			</if>
+		where 1=1
+			and pbIdx = #{pbIdx}
+	</update>
+	
+	<delete id="delete">
+		delete from pboard
+		where pbIdx in 
+			<foreach item="arr" collection="array"
+			      open="(" separator="," close=")">
+			        #{arr}
+		  	</foreach>
+	</delete>
+	
+	<select id="GetProject" resultType="com.blackah.site.vo.ProjectVO">
+		select
+			*
+		from
+			pboard
+		where 1=1
+			and pbIdx = #{pbIdx}
+	</select>
+	
+	<select id="skillList" resultType="com.blackah.site.vo.SkillVO">
+		select * from skillList
+	</select>
+</mapper>

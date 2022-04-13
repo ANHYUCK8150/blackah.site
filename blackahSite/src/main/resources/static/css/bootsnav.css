@@ -554,7 +554,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li > a{
         padding: 10px 15px;
-        color: #6f6f6f;
+        color: white;
     }
     
     nav.navbar.bootsnav li.dropdown ul.dropdown-menu > li:last-child > a{

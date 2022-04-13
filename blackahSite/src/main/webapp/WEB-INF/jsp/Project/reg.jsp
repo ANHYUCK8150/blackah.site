@@ -139,134 +139,153 @@
 			
 		});
 	</script>
-	<div class="ds_mall" style = " width:1200px; margin:0 auto; margin-bottom:30px;">
-		<div class="ds_sub_area" style="width:1200px;">
-			<div class="titleArea">
-				<c:choose>
-					<c:when test="${projectList.pbIdx != null}">
-						<h2>프로젝트 수정</h2>
-					</c:when>
-					<c:otherwise>
-						<h2>프로젝트 등록</h2>
-					</c:otherwise>
-				</c:choose>
-				<span style="color:#999; float:left; height:32px; line-height:50px;"></span>
-			</div>
-		</div>
-		
-		<form id="regForm" enctype="multipart/form-data">
-			<input type="hidden" id="pbIdx" name="pbIdx" value="${projectList.pbIdx }">
-			<table class="rq_table">
-				<colgroup>
-					<col style="width:15%;">
-					<col style="width:35%;">
-					<col style="width:15%;">
-					<col style="width:35%;">
-				</colgroup>
-				<tbody>
-					<tr>
-						<th scope="row" class="thead">
-							<label>프로젝트명</label><label class="th_input_css"><img src="${path}/resources/images/icon_medium_blck1.png" alt="필수항목"></label>
-						</th>
-						<td colspan="3"><input name="pbSubject" id="pbSubject" value="${projectList.pbSubject }" style="width:85%; border:solid 1px #cecece;" ></td>
-					</tr>        
-					<tr>
-						<th scope="row" class="thead">
-							<label>기술</label><label class="th_input_css"><img src="${path}/resources/images/icon_medium_blck1.png" alt="필수항목"></label>
-						</th>
-						<td colspan="3">
-							<ul class="checkBox floatBox">
-								<c:forEach items="${skillList }" var="skillList">
-									<li style="float:left; margin-right:20px;">
-										<input type="checkbox" id="pbSkill_${skillList.sklIdx }" name="pbSkill_chk" value="${skillList.sklNM }">
-										<label for="pbSkill_${skillList.sklIdx }">${skillList.sklNM }</label>
-									</li>
-								</c:forEach>
-							</ul>
-							<input type="hidden" id="pbSkill" name="pbSkill" value="">
-						</td>
-					</tr>
-					<tr>
-						<th scope="row" class="thead">
-							<label>업무</label><label class="th_input_css"><img src="${path}/resources/images/icon_medium_blck1.png" alt="필수항목"></label>
-						</th>
-						<td colspan="3">
-							<ul class="checkBox floatBox">
-								<li style="float:left; margin-right:20px;">
-									<input type="checkbox" id="pbWork_1" name="pbWork_chk" value="개발">
-									<label for="pbWork_1">개발</label>
-								</li>
-								<li style="float:left; margin-right:20px;">
-									<input type="checkbox" id="pbWork_2" name="pbWork_chk" value="운영">
-									<label for="pbWork_2">운영</label>
-								</li>
-								<li style="float:left; margin-right:20px;">
-									<input type="checkbox" id="pbWork_3" name="pbWork_chk" value="기획">
-									<label for="pbWork_3">기획</label>
-								</li>
-								<li style="float:left; margin-right:20px;">
-									<input type="checkbox" id="pbWork_4" name="pbWork_chk" value="설계">
-									<label for="pbWork_4">설계</label>
-								</li>
-								<li style="float:left; margin-right:20px;">
-									<input type="checkbox" id="pbWork_5" name="pbWork_chk" value="교육">
-									<label for="pbWork_5">교육</label>
-								</li>
-							</ul>
-							<input type="hidden" id="pbWork" name="pbWork" value="">
-						</td>               
-					</tr>
-					<tr>
-						<th scope="row" class="thead">
-							<label>시작일</label><label class="th_input_css"><img src="${path}/resources/images/icon_medium_blck1.png" alt="필수항목"></label>
-						</th>
-						<td><input name="pbStartDT" id="pbStartDT" value="${projectList.pbStartDT }" style="width:60%; border:solid 1px #cecece;" ></td>
-						<th scope="row" class="thead">
-							<label>종료일</label><label class="th_input_css"><img src="${path}/resources/images/icon_medium_blck1.png" alt="필수항목"></label>
-						</th>
-						<td><input name="pbEndDT" id="pbEndDT" value="${projectList.pbEndDT }" style="width:60%; border:solid 1px #cecece;" ></td>               
-					</tr>
-					<tr>
-						<th>
-							<label>내용</label>
-						</th>
-						<td colspan="3">
-							<textarea id="pbContent" name="pbContent" rows="40">${projectList.pbContent }</textarea>
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<label>대표이미지</label>
-						</th>
-						<td colspan="2"><input name="pbImageNM" id="pbImageNM" value="" style="width:90%; border:solid 1px #cecece;" readonly="readonly" aria-invalid="false"></td>
-						<td>
-							<button class="btnAddFile" id="btnImage" name="btnImage" type="button">파일첨부</button>
-							<input accept=".jpg, .jpeg, .gif, .png" id="pbImage" name="pbImage" style="display: none;" type="file" value="">
-							
-						</td>
-					</tr>
-					<tr>
-						<th>
-							<label>이미지 미리보기</label>
-						</th>
-						<td colspan="3">
-							<img  class="uploadImagePreview" id="imageView" style="max-width: 650px;" src="${path}/${projectList.pbImage }">
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
-		<div class="confirmArea" style="margin-bottom:30px;">
-			<button type="button" class="regItem btnEndProduct" id="SubmitButton" style="width:130px;">
-				<c:choose>
-					<c:when test="${projectList.pbIdx != null}">
-						수정
-					</c:when>
-					<c:otherwise>
-						등록
-					</c:otherwise>
-				</c:choose>
-			</button>
-			<button type="button" class="cancelItem" id="CancelButton">목록으로</button>
-		</div>
+	
+	<div class="all-title-box">
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-lg-12">
+	                <h2>프로젝트</h2>
+	                <ul class="breadcrumb">
+	                    <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+	                    <c:choose>
+							<c:when test="${projectList.pbIdx != null}">
+								 <li class="breadcrumb-item active">프로젝트 수정</li>
+							</c:when>
+							<c:otherwise>
+								 <li class="breadcrumb-item active">프로젝트 등록</li>
+							</c:otherwise>
+						</c:choose>
+	                </ul>
+	            </div>
+	        </div>
+	    </div>
 	</div>
+	
+	<div class="shop-box-inner">
+	    <div class="container">
+	        <div class="row">
+	        	<div class="col-lg">
+	        		<form id="regForm" enctype="multipart/form-data">
+						<input type="hidden" id="pbIdx" name="pbIdx" value="${projectList.pbIdx }">
+						<table class="rq_table">
+							<colgroup>
+								<col style="width:15%;">
+								<col style="width:35%;">
+								<col style="width:15%;">
+								<col style="width:35%;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row" class="thead">
+										<label>프로젝트명</label><label class="th_input_css"><img src="${path}/images/icon_medium_blck1.png" alt="필수항목"></label>
+									</th>
+									<td colspan="3"><input name="pbSubject" id="pbSubject" value="${projectList.pbSubject }" style="width:85%; border:solid 1px #cecece;" ></td>
+								</tr>        
+								<tr>
+									<th scope="row" class="thead">
+										<label>기술</label><label class="th_input_css"><img src="${path}/images/icon_medium_blck1.png" alt="필수항목"></label>
+									</th>
+									<td colspan="3">
+										<ul class="checkBox floatBox">
+											<c:forEach items="${skillList }" var="skillList">
+												<li style="float:left; margin-right:20px;">
+													<input type="checkbox" id="pbSkill_${skillList.sklIdx }" name="pbSkill_chk" value="${skillList.sklNM }">
+													<label for="pbSkill_${skillList.sklIdx }">${skillList.sklNM }</label>
+												</li>
+											</c:forEach>
+										</ul>
+										<input type="hidden" id="pbSkill" name="pbSkill" value="">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="thead">
+										<label>업무</label><label class="th_input_css"><img src="${path}/images/icon_medium_blck1.png" alt="필수항목"></label>
+									</th>
+									<td colspan="3">
+										<ul class="checkBox floatBox">
+											<li style="float:left; margin-right:20px;">
+												<input type="checkbox" id="pbWork_1" name="pbWork_chk" value="개발">
+												<label for="pbWork_1">개발</label>
+											</li>
+											<li style="float:left; margin-right:20px;">
+												<input type="checkbox" id="pbWork_2" name="pbWork_chk" value="운영">
+												<label for="pbWork_2">운영</label>
+											</li>
+											<li style="float:left; margin-right:20px;">
+												<input type="checkbox" id="pbWork_3" name="pbWork_chk" value="기획">
+												<label for="pbWork_3">기획</label>
+											</li>
+											<li style="float:left; margin-right:20px;">
+												<input type="checkbox" id="pbWork_4" name="pbWork_chk" value="설계">
+												<label for="pbWork_4">설계</label>
+											</li>
+											<li style="float:left; margin-right:20px;">
+												<input type="checkbox" id="pbWork_5" name="pbWork_chk" value="교육">
+												<label for="pbWork_5">교육</label>
+											</li>
+										</ul>
+										<input type="hidden" id="pbWork" name="pbWork" value="">
+									</td>               
+								</tr>
+								<tr>
+									<th scope="row" class="thead">
+										<label>시작일</label><label class="th_input_css"><img src="${path}/images/icon_medium_blck1.png" alt="필수항목"></label>
+									</th>
+									<td><input name="pbStartDT" id="pbStartDT" value="${projectList.pbStartDT }" style="width:60%; border:solid 1px #cecece;" ></td>
+									<th scope="row" class="thead">
+										<label>종료일</label><label class="th_input_css"><img src="${path}/images/icon_medium_blck1.png" alt="필수항목"></label>
+									</th>
+									<td><input name="pbEndDT" id="pbEndDT" value="${projectList.pbEndDT }" style="width:60%; border:solid 1px #cecece;" ></td>               
+								</tr>
+								<tr>
+									<th>
+										<label>내용</label>
+									</th>
+									<td colspan="3">
+										<textarea id="pbContent" name="pbContent" rows="40">${projectList.pbContent }</textarea>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label>대표이미지</label>
+									</th>
+									<td colspan="2"><input name="pbImageNM" id="pbImageNM" value="" style="width:90%; border:solid 1px #cecece;" readonly="readonly" aria-invalid="false"></td>
+									<td>
+										<button class="btnAddFile" id="btnImage" name="btnImage" type="button">파일첨부</button>
+										<input accept=".jpg, .jpeg, .gif, .png" id="pbImage" name="pbImage" style="display: none;" type="file" value="">
+										
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label>이미지 미리보기</label>
+									</th>
+									<td colspan="3">
+										<img  class="uploadImagePreview" id="imageView" style="max-width: 650px;" src="${path}/${projectList.pbImage }">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+	        	</div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-lg">
+	        		<div class="confirmArea" style="margin-bottom:30px;">
+						<button type="button" class="regItem btnEndProduct" id="SubmitButton" style="width:130px;">
+							<c:choose>
+								<c:when test="${projectList.pbIdx != null}">
+									수정
+								</c:when>
+								<c:otherwise>
+									등록
+								</c:otherwise>
+							</c:choose>
+						</button>
+						<button type="button" class="cancelItem" id="CancelButton">목록으로</button>
+					</div>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+	
