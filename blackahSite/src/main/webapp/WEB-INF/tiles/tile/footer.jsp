@@ -23,7 +23,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> 
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-link-contact">
                         <h4>개발스택</h4>
