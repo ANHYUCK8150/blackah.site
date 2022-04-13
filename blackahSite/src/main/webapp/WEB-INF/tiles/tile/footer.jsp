@@ -27,7 +27,7 @@
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-link-contact">
                         <h4>개발스택</h4>
-                        <ul>
+                        <ul> 
                         	<li>
                                 <p><i class="fas fa-circle"></i>AWS EC2, GITHUB, Jenkins</p>
                             </li>

@@ -12,19 +12,19 @@
                     <div id="offer-box" class="carouselTicker">
                         <ul class="offer-box">
                             <li>
-                                <i class="fab fa-opencart"></i> 홈페이지에 방문해주셔서 감사합니다.
+                                홈페이지에 방문해주셔서 감사합니다.
                             </li>
                             <li>
-                                <i class="fab fa-opencart"></i> 저를 소개하는 홈페이지 입니다.
+                                저를 소개하는 홈페이지 입니다.
                             </li>
                             <li>
-                                <i class="fab fa-opencart"></i> 제가 수행했던 프로젝트를 확인 할 수 있습니다.
+                                제가 수행했던 프로젝트를 확인 할 수 있습니다.
                             </li>
                             <li>
-                                <i class="fab fa-opencart"></i> 궁금하신 사항은 게시판의 질의응답 및 이메일, 문자 남겨 주시면 감사합니다.
+                                궁금하신 사항은 게시판의 질의응답 및 이메일, 문자 남겨 주시면 감사합니다.
                             </li>
                             <li>
-                                <i class="fab fa-opencart"></i> API활용은 공공데이터 포털의 데이터를 활용한 사항입니다.
+                                API활용은 공공데이터 포털의 데이터를 활용한 사항입니다.
                             </li>
                         </ul>
                     </div>
