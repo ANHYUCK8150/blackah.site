@@ -25,6 +25,25 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="footer-link-contact">
+                        <h4>개발스택</h4>
+                        <ul>
+                        	<li>
+                                <p><i class="fas fa-circle"></i>AWS EC2, GITHUB, Jenkins</p>
+                            </li>
+                        	<li>
+                                <p><i class="fas fa-circle"></i>JAVA, SpringBoot, Mybatis </p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-circle"></i>JSP, HTML, CSS, BootStrap</p>
+                            </li>
+                            <li>
+                                <p><i class="fas fa-circle"></i>MariaDB</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="footer-widget">
                         <h4>API활용</h4>
                         <ul>
