@@ -10,4 +10,8 @@ public class MemberVO {
 	private String mbNM;
 	private String mbEmail;
 	private String mbPhone;
+	private String mbPost;
+	private String mbAddress;
+	private String mbAddress2;
+	private String mbRegDT;
 }

@@ -7,27 +7,24 @@
 function login(){
 	var obj=document.login_form;	
 	if(!obj.mbID.value){
-			alert("아이디를 입력하세요.");
-			obj.mbID.focus();
-			return false;
-	}
-	var pattern = /^[^a-z0-9]|[^a-z0-9_]/;
-	if (pattern.test(obj.mbID.value)){
-		alert("올바른 아이디를 입력하세요.");
+		alert("아이디를 입력하세요.");
 		obj.mbID.focus();
 		return false;
 	}
-
-	if(obj.mbID.value.length<4){
-		alert("아이디는 4자 이상입니다.");
+	
+	var regExp = /^[a-z]+[a-z0-9]{4,19}$/g;
+	 
+	if(!regExp.test(obj.mbID.value)){
+		alert("아이디는 5~20자 입력하세요.\n첫문자는 영문자로 시작해야합니다.");
+		obj.mbID.value = "";
 		obj.mbID.focus();
 		return false;
 	}
 
 	if(!obj.mbPW.value){
-			alert("비밀번호를 입력하세요.");
-			obj.mbPW.focus();
-			return false;
+		alert("비밀번호를 입력하세요.");
+		obj.mbPW.focus();
+		return false;
 	}
 
 	obj.submit();			
@@ -39,6 +36,12 @@ $(document).ready(function(){
 		
 		$(this).submit();
 		
+	});
+	
+	$("#mbID, #mbPW").keyup(function(key){
+		if(key.keyCode==13) {
+			$("#login_btn").trigger("click");
+		}
 	});
 	
 });
@@ -63,30 +66,31 @@ $(document).ready(function(){
 <div class="about-box-main">
     <div class="container">
         <div class="row">
-        	<div class="col-xl-12 col-lg-12 col-sm-12 col-xs-12">
+        	<div class="col-lg">
         	<form name="login_form" id="login_form" method="post" action="/Login_OK.do" onsubmit="login(); return false;">
-	            <section class="join">
-	                <div class="joinIp login">
-	                    <dl>
-	                        <dt>아이디</dt>
-	                        <dd><label for="mbID"></label><input type="text" class="form-control" title="아이디를 입력하세요." value="" type="text" id="mbID" name="mbID"></dd>
-	                    </dl>
-	                    <dl class="nextDl">
-	                        <dt>비밀번호</dt>
-	                        <dd><label for="mbPW"></label><input type="password" class="form-control" maxlength="25" title="비밀번호를 입력하세요." id="mbPW" name="mbPW" ></dd>
-	                    </dl>
-	                    <div class="confirmArea">
-	                        <button type="button"  id="login_btn" class="loginBtn regItem">로그인</button>
-	                    </div>
-	                    <div class="loginOption">
-	                        <ul>
-	                            <li><a href="javascript:return false;">아이디찾기</a></li>
-	                            <li><a href="javascript:return false;">비밀번호찾기</a></li>
-	                            <li><a href="/member/confirm.do">회원가입</a></li>
-	                        </ul>
-	                    </div>
+        		<div class="checkout-address joinIp login">
+                    <div class="mb-3">
+                        <label for="mbID">아이디</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control idCheck" id="mbID" name="mbID" placeholder="" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mbPW">비밀번호</label>
+                        <input type="password" class="form-control" id="mbPW" name="mbPW" placeholder="">
+                    </div>
+                        
+                    <div class="confirmArea">
+	                    <button type="button"  id="login_btn" class="loginBtn regItem">로그인</button>
 	                </div>
-	            </section>
+	                <div class="loginOption">
+	                    <ul>
+	                        <li><a href="javascript:return false;">아이디찾기</a></li>
+	                        <li><a href="javascript:return false;">비밀번호찾기</a></li>
+	                        <li><a href="/member/confirm.do">회원가입</a></li>
+	                    </ul>
+	                </div>
+                  </div>
 	           </form>
 	       </div>
         </div>

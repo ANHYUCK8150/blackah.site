@@ -87,12 +87,12 @@
                 <ul>
                 	<c:choose>
 		        		<c:when test="${memberInfo.mbIdx != null}">
-		        			<li><div style="padding: 30px 0; margin-right:7px;">${memberInfo.mbNM } &nbsp; [${memberInfo.mbID }]</div></li>
 							<li><a href="/Logout.do"><i class="fa fa-sign-out-alt"></i></a></li>
+							<li><a href="../member/mypage.do"><i class="fa fa-user"></i></a></li>
 		        		</c:when>
 		        		<c:otherwise>
 		        			<li><a href="../member/login.do"><i class="fa fa-sign-in-alt"></i></a></li>
-							<li><a href="../member/confirm.do"><i class="fa fa-user"></i></a></li>
+							<li><a href="../member/mypage.do"><i class="fa fa-user"></i></a></li>
 		        		</c:otherwise>
 		        	</c:choose>
                 </ul>

@@ -90,7 +90,7 @@ textarea:-ms-input-placeholder {color:#999;}
 
 
 .confirmArea {margin-top:30px; text-align:center;}
-.confirmArea .regItem {width:118px; height:50px; background:#377ded; color:#fff; border:0; cursor:pointer; font-weight:350; font-size:15px; border-radius:3px;}
+.confirmArea .regItem {width:118px; height:50px; background:#b0b435; color:#fff; border:0; cursor:pointer; font-weight:350; font-size:15px; border-radius:3px;}
 .confirmArea .regItem.signup {width:151px;}
 .confirmArea .regItem.comsignup {width:181px;}
 .confirmArea .replyItem {width:118px; height:50px; background:#40aabb; color:#fff; border:0; cursor:pointer; font-weight:350; font-size:15px; border-radius:3px; margin-right:20px;}
@@ -103,20 +103,6 @@ textarea:-ms-input-placeholder {color:#999;}
 .join:after {display:block; content:""; clear:both;}
 .joinIp {padding:0px 20%;}
 .joinIp dl:after {display:block; content:""; clear:both;}
-.joinIp dt {float:left; width:100%; line-height:50px; font-size:15px; color:#222; font-weight:500;}
-.joinIp dd {float:left;width:100%;}
-.joinIp dd.joinNumber input {width:94px;}
-.joinIp dd.email input {width:94px;}
-.joinIp dd.email span {width:15px; padding:0 8px;}
-.joinIp dd.email .searchTotal {display:inline-block; vertical-align:top; margin-left:11px;}
-.joinIp dd.email .searchTotal .searchSelect {width:156px; background-position:120px;}
-.joinIp dd.email .searchOptionList li {width:156px;}
-.joinIp dd input {width:100%; height:48px; padding:0 20px; border:1px solid #cfcfcf; border-radius:3px;} /* 20190528 수정 보더값 e9e9e9 */
-.joinIp dd span {display:inline-block; width:5px; padding:0 13px;}
-.joinIp dd .radioArea li {line-height:50px;}
-.joinIp dd .txt {font-size:14px; color:#999999; font-weight:350; margin-top:10px;}
-.joinIp dd .btnForm input {width:305px; margin-right:10px;}
-.joinIp dd .addressDetail {margin-top:10px;}
 
 
 .joinIp.login {padding:0px 20%;}
@@ -126,7 +112,7 @@ textarea:-ms-input-placeholder {color:#999;}
 .joinIp.login .loginOption ul li {float:left; padding:10px 30px 0; position:relative;}
 .joinIp.login .loginOption ul li + li:after {position:absolute; content:''; height:14px; border-left:1px solid #cfcfcf; left:0; top:17px;} /* 20190528 수정 보더값 e9e9e9 */
 .joinIp.login .loginOption ul li a {font-size:15px; color:#666;}
-.joinIp.login .loginOption ul li a:hover {color:#377ded; padding-bottom:6px; border-bottom:1px solid #86a9f1;}
+.joinIp.login .loginOption ul li a:hover {color:#b0b435; padding-bottom:6px; border-bottom:1px solid #86a9f1;}
 
 .nextDl {margin-top:20px;}
 .joinIp .confirmArea {margin-top:40px;}

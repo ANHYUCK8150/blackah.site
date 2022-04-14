@@ -7,42 +7,10 @@
 
 function Confirm(){
 	var obj=document.confirm_form;	
-	if(!obj.mbID.value){
-		alert("아이디를 입력하세요.");
-		obj.mbID.focus();
-		return false;
-	}
-	
-	var regExp = /^[a-z]+[a-z0-9]{4,19}$/g;
- 
-	if(!regExp.test(obj.mbID.value)){
-		alert("아이디는 5~20자 입력하세요.\n첫문자는 영문자로 시작해야합니다.");
-		obj.mbID.value = "";
-		obj.mbID.focus();
-		return false;
-	}
 	
 	if(!obj.mbNM.value){
 		alert("이름을 입력하세요.");
 		obj.mbNM.focus();
-		return false;
-	}
-
-	if(!obj.mbPW.value){
-		alert("비밀번호를 입력하세요.");
-		obj.mbPW.focus();
-		return false;
-	}
-	
-	if(obj.mbPW.value.length < 4){
-		alert("비밀번호는 4자리 이상 입력하세요.");
-		obj.mbPW.focus();
-		return false;
-	}
-	
-	if(obj.mbPW.value != obj.mbPWchk.value){
-		alert("비밀번호와 비밀번호확인이 다릅니다.");
-		obj.mbPWCK.focus();
 		return false;
 	}
 	
@@ -56,29 +24,6 @@ function Confirm(){
 		alert("이메일을 입력하세요.");
 		obj.mbEmail.focus();
 		return false;
-	}
-	
-	var chkID = "";
-	
-	$.ajax({
-        url: "id_check.do",
-        type: "POST",
-        data: {
-        	"mbID" : obj.mbID.value
-        },
-        async:false,
-        success: function(data){
-			chkID = data;
-        },
-        error: function(){
-            
-        }
-    });
-	
-	if(chkID == "FIND"){
-		alert("중복된 아이디 입니다.");
-		obj.mbID.focus();
-		return;
 	}
 	
 	var chkPhone = "";
@@ -140,6 +85,10 @@ $(document).ready(function(){
 		execDaumPostcode();
 	});
 	
+	$("#mbPW").click(function(){
+		window.open('/member/pwModify.do', '비밀번호 변경', 'width=600px,height=500px,scrollbars=yes');
+	});
+	
 	
 });
 
@@ -149,10 +98,10 @@ $(document).ready(function(){
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>회원가입</h2>
+                <h2>마이페이지</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
-                    <li class="breadcrumb-item active">회원가입</li>
+                    <li class="breadcrumb-item active">마이페이지</li>
                 </ul>
             </div>
         </div>
@@ -163,55 +112,50 @@ $(document).ready(function(){
     <div class="container">
         <div class="row">
         	<div class="col-lg">
-	        	<form class="needs-validation" name="confirm_form" id="confirm_form" method="post" action="/member/reg.do" onsubmit="Confirm(); return false;">
+	        	<form class="needs-validation" name="confirm_form" id="confirm_form" method="post" action="/member/modify.do" onsubmit="Confirm(); return false;">
 	        		<div class="checkout-address joinIp">
 	                    <div class="row">
 	                        <div class="col-md-6 mb-3">
-	                            <label for="mbID">아이디 *</label>
-	                            <input type="text" class="form-control idCheck" id="mbID" name="mbID" placeholder="" value="" required>
+	                            <label for="mbID">아이디</label>
+	                            <input type="text" class="form-control idCheck" id="mbID" name="mbID" placeholder="" value="${memberInfo.mbID}" required readonly>
+	                            <input type="hidden" id="mbIdx" name="mbIdx" value="${memberInfo.mbIdx}" >
 	                        </div>
 	                        <div class="col-md-6 mb-3">
-	                            <label for="mbNM">이름 *</label>
-	                            <input type="text" class="form-control" id="mbNM" name="mbNM" placeholder="" value="" required>
-	                        </div>
-	                    </div>
-	                    <div class="row">
-	                        <div class="col-md-6 mb-3">
-	                            <label for="mbPW">비밀번호 *</label>
-	                            <input type="password" class="form-control" id="mbPW" name="mbPW" placeholder="" value="" required>
-	                        </div>
-	                        <div class="col-md-6 mb-3">
-	                            <label for="mbPWchk">비밀번호 확인 *</label>
-	                            <input type="password" class="form-control" id="mbPWchk" placeholder="" value="" required>
+	                            <label for="mbPW"></label>
+	                            <input type="button" class="form-control" id="mbPW" name="mbPW" placeholder="" value="비밀번호 변경" required>
 	                        </div>
 	                    </div>
 	                    <div class="mb-3">
-	                        <label for="mbEmail">이메일 *</label>
+                            <label for="mbNM">이름</label>
+                            <input type="text" class="form-control" id="mbNM" name="mbNM" placeholder="" value="${memberInfo.mbNM}" required>
+	                    </div>
+	                    <div class="mb-3">
+	                        <label for="mbEmail">이메일</label>
 	                        <div class="input-group">
-	                            <input type="text" class="form-control" id="mbEmail" name="mbEmail" placeholder="" required>
+	                            <input type="text" class="form-control" id="mbEmail" name="mbEmail" placeholder="" value="${memberInfo.mbEmail}" required>
 	                        </div>
 	                    </div>
 	                    <div class="mb-3">
-	                        <label for="mbPhone">전화번호 *</label>
-	                        <input type="email" class="form-control phoneNumber" id="mbPhone" name="mbPhone" placeholder="">
+	                        <label for="mbPhone">전화번호</label>
+	                        <input type="email" class="form-control phoneNumber" id="mbPhone" name="mbPhone" value="${memberInfo.mbPhone}" placeholder="">
 	                    </div>
 	                    <div class="mb-3">
 	                        <label for="mbAddress">주소</label>
-	                        <input type="text" class="form-control" id="mbAddress" name="mbAddress" placeholder="" required>
+	                        <input type="text" class="form-control" id="mbAddress" name="mbAddress" value="${memberInfo.mbAddress}" placeholder="" required>
 	                    </div>
 	                    <div class="row">
 	                        <div class="col-md-8 mb-3">
 	                            <label for="mbAddress2">상세주소</label>
-	                        	<input type="text" class="form-control" id="mbAddress2" name="mbAddress2" placeholder="" required>
+	                        	<input type="text" class="form-control" id="mbAddress2" name="mbAddress2" placeholder="" value="${memberInfo.mbAddress2}" required>
 	                        </div>
 	                        <div class="col-md-4 mb-3">
 	                            <label for="mbPost">우편번호</label>
-	                            <input type="text" class="form-control" id="mbPost" name="mbPost" placeholder="" required>
+	                            <input type="text" class="form-control" id="mbPost" name="mbPost" placeholder="" value="${memberInfo.mbPost}" required>
 	                        </div>
 	                    </div>
 	                        
 	                    <div class="confirmArea">
-	                        <button type="button"  id="confirm_btn" class="confirmBtn regItem">가입</button>
+	                        <button type="button"  id="confirm_btn" class="confirmBtn regItem">변경</button>
 	                    </div>
 	                </div>
 	           </form>
