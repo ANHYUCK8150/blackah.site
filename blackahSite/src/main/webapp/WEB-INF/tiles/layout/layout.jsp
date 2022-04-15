@@ -32,7 +32,7 @@
 		<tiles:insertAttribute name="header" />
 		<div class="dim_layer" style="display:  none"></div>
 	</div>
-	<div id="content" style="min-height:653px;">
+	<div id="content" >
 		<tiles:insertAttribute name="content" />
 		<div id='my-spinner'>
 		  <div>

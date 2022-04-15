@@ -178,6 +178,7 @@
 
 $(document)
 		.ajaxStart(function () {
+			$('#my-spinner').css("top",$(document).scrollTop());
 			$('#my-spinner').show();
 		})
 		.ajaxStop(function () {
