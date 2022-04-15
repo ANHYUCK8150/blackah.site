@@ -44,12 +44,15 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12">
-                    <div class="footer-widget">
+                    <div class="footer-link-contact">
                         <h4>API활용</h4>
                         <ul>
                         	<li>
-                        		<img src="${path}/images/img_opentype01.jpg" width="180" height="80">
+                        		<img src="${path}/images/img_opentype01.jpg" width="210" height="100">
                         	</li>
+                        	<li>
+                                <p><i class="fas fa-circle"></i>NAVER Developers</p>
+                            </li>
                         </ul>
                     </div>
                 </div>

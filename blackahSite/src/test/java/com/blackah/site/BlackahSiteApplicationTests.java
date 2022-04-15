@@ -1,15 +1,24 @@
 package com.blackah.site;
 
+import javax.annotation.Resource;
+
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.blackah.site.service.impl.NaverBookService;
 
 @SpringBootTest
 class BlackahSiteApplicationTests {
-
+	@Resource(name="BookAPI")
+	private NaverBookService bookService;
+	
 	@Test
 	void contextLoads() {
+	}
+	
+	@Test
+	public void bookList() {
+		//System.out.println(bookService.searchBook("java",10,1));
 	}
 	
 

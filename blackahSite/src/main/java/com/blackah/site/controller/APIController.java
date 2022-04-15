@@ -1,7 +1,6 @@
 package com.blackah.site.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,12 +14,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blackah.site.config.APIClass;
 import com.blackah.site.service.APIService;
+import com.blackah.site.service.impl.NaverBookService;
+import com.blackah.site.vo.BookVO;
 import com.blackah.site.vo.HmCodeVO;
+import com.blackah.site.vo.PagingVO;
 
 @Controller
 public class APIController {
 	@Resource(name="APIService")
 	private APIService apiService;
+	
+	@Resource(name="BookAPI")
+	private NaverBookService bookService;
 	
 	@RequestMapping("api/fruit.do")
 	public String fruit(Model model) {
@@ -82,10 +87,46 @@ public class APIController {
 		
 		APIClass apiClass = new APIClass();
 		
-		System.out.println("================= map " + params);
-		
 		Object result = apiClass.response(params);
 		
 		return result;
 	}
+	
+	
+	
+	
+	/*
+	 * 도서 검색 API
+	 */
+	@RequestMapping("api/book.do")
+	public String bookAPI(Model model) {
+		
+		PagingVO pagingVO = new PagingVO();
+		List<BookVO> bookList = bookService.searchBook("java", 10, 1,pagingVO);
+		System.out.println(pagingVO);
+		model.addAttribute("bookList",bookList);
+		model.addAttribute("total", pagingVO.getTotal());
+		model.addAttribute("paging", pagingVO);
+		return "API/list_book";
+	}
+	
+	@RequestMapping("api/list_book_ajax.do")
+	public String bookAPI_ajax(Model model
+			,@RequestParam(value="nowPage", required=false)Integer nowPage
+			,@RequestParam(value="searchText", required=false)String searchText
+			,@RequestParam(value="searchOption", required=false)Integer searchOption
+		) {
+		
+		if(searchText.equals("")) {
+			searchText = "java";
+		}
+		
+		PagingVO pagingVO = new PagingVO();
+		List<BookVO> bookList = bookService.searchBook(searchText, searchOption, nowPage,pagingVO);
+		model.addAttribute("bookList",bookList);
+		model.addAttribute("total", pagingVO.getTotal());
+		model.addAttribute("paging", pagingVO);
+		return "API/ajax/list_book_ajax";
+	}
+	
 }

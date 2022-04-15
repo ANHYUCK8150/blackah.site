@@ -9,7 +9,7 @@
                                 <div class="toolbar-sorter-right">
                                     <span>총 : ${TotalProjectList }</span>
 	                                <p>
-	                                	<span> 페이지번호 : <strong>1</strong>/${paging.lastPage }</span>
+	                                	<span> 페이지번호 : <strong>${paging.nowPage }</strong>/${paging.lastPage }</span>
 	                                </p>
                                 </div>
                             </div>

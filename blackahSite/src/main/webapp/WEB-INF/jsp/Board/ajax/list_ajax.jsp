@@ -8,7 +8,7 @@
 				                     <div class="col-12 col-sm-12 text-sm-left">
 				                         <div class="toolbar-sorter-right">
 				                             <span>총 : ${ListCnt }</span>
-				                          	<span> 페이지번호 : <strong>1</strong>/${paging.lastPage }</span>
+				                          	<span> 페이지번호 : <strong>${paging.nowPage }</strong>/${paging.lastPage }</span>
 				                         </div>
 				                     </div>
 				                 </div>

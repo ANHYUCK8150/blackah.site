@@ -45,8 +45,10 @@
 		$(window).on('scroll', function() {
 			if ($(this).scrollTop() > 100) {
 				$('#back-to-top').fadeIn();
+				$('#top-to-back').fadeOut();
 			} else {
 				$('#back-to-top').fadeOut();
+				$('#top-to-back').fadeIn();
 			}
 		});
 		$('#back-to-top').click(function() {
@@ -55,6 +57,14 @@
 			}, 600);
 			return false;
 		});
+		$('#top-to-back').click(function() {
+			$("html, body").animate({
+				scrollTop: $(document).height()
+			}, 600);
+			return false;
+		});
+		
+		
 	});
 
 	/* ..............................................

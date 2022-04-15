@@ -57,7 +57,7 @@ public class ProjectController {
 		model.addAttribute("TotalProjectList", listCnt);
 		model.addAttribute("paging", pagingVO);
 		
-		return "/Project/list";
+		return "Project/list";
 	}
 	
 	//AJAX 프로젝트 리스트
@@ -94,7 +94,7 @@ public class ProjectController {
 		model.addAttribute("paging", pagingVO);
 		model.addAttribute("listType", listType);
 		
-		return "/Project/ajax/list_ajax";
+		return "Project/ajax/list_ajax";
 	}
 	
 	//프로젝트 등록 페이지
@@ -102,7 +102,7 @@ public class ProjectController {
 	public String reg(Model model, @RequestParam(value="pbIdx", required=false)String pbIdx
 			,HttpSession session) {
 		
-		String result = "/Project/reg";
+		String result = "Project/reg";
 		ProjectVO projectList = new ProjectVO();
 		if(pbIdx != null) {
 			projectList = proService.GetProject(pbIdx);
@@ -115,7 +115,7 @@ public class ProjectController {
 		MemberVO memberVO = (MemberVO) session.getAttribute("memberInfo");
 		
 		if(memberVO == null) {
-			result = "/Project/view";
+			result = "Project/view";
 		}
 		
 		return result;
