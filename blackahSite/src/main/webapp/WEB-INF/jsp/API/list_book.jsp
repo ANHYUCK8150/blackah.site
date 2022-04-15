@@ -8,7 +8,8 @@
 </style>
 
 <script type="text/javascript">
-	function changePaging(page){	
+	
+	function changePaging(page){
 		$.ajax({
 	        url: "list_book_ajax.do",
 	        type: "POST",
@@ -22,7 +23,6 @@
 	            $('#GridList').html(data);
 	        },
 	        error: function(){
-	            
 	        }
 	    });
 	}

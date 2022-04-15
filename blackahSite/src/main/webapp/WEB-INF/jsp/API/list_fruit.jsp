@@ -330,7 +330,7 @@
 					"pageNo" : page,
 					"numOfRows" : $("#pageCount").val()
 				},
-				async: false,
+				//async: false,
 				success : function (data)
 				{	
 					var items = data.response.body.items.item;

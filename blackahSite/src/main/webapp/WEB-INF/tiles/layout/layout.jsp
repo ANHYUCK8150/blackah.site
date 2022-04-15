@@ -34,6 +34,13 @@
 	</div>
 	<div id="content" style="min-height:653px;">
 		<tiles:insertAttribute name="content" />
+		<div id='my-spinner'>
+		  <div>
+		    <span>
+		    	<img src='//cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif'>
+		    </span>
+		  </div>
+		</div>
 	</div>
 	<div id="footer_wrap">
 		<tiles:insertAttribute name="footer" />
