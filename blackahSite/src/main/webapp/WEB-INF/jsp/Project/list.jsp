@@ -136,7 +136,7 @@
 			$("#deleteItem").off("click");
 			$("#deleteItem").on("click",function(){
 				var selectList = new Array();
-				if($("#listType1").hasClass("on") === true) {
+				if($("#listType1").hasClass("active") === true) {
 					$("input[name=projectChkBox]:checked").each(function(){
 						var chk = $(this).val();
 						selectList.push(chk);

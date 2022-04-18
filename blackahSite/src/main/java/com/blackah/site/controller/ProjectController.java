@@ -116,6 +116,10 @@ public class ProjectController {
 		
 		if(memberVO == null) {
 			result = "Project/view";
+		}else {
+			if(!memberVO.getMbID().equals("admin")) {
+				result = "Project/view";
+			}
 		}
 		
 		return result;
@@ -153,7 +157,7 @@ public class ProjectController {
 		try {
 			FileUploadClass fileUpload = new FileUploadClass();
 			
-			String url = fileUpload.restore(file,request);
+			String url = fileUpload.restore(file);
 		    
 		    projectVO.setPbImage(url);
 		    

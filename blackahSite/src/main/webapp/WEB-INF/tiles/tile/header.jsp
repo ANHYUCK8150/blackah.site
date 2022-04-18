@@ -55,7 +55,6 @@
                 		<ul class="dropdown-menu">
                 			<li ><a href="../intro/introduce.do" >인사말</a></li>
 			                <li ><a href="../intro/resume.do" >이력서</a></li>
-			                <li ><a href="../intro/cdt.do?" >코딩테스트</a></li>
                 		</ul>
                 	</li>
                     <li class="nav-item" id="menu_about"><a class="nav-link" href="../project/list.do">프로젝트</a></li>
@@ -78,6 +77,20 @@
 			                </li>
 			                <li >
 			                	<a href="../api/book.do" >도서검색</a>
+			                </li>
+                		</ul>
+                	</li>
+                	<li class="dropdown">
+                		<a href="../myplace/bookreport.do" class="nav-link dropdown-toggle" data-toggle="dropdown">나의공간</a>
+                		<ul class="dropdown-menu">
+                			<li >
+			                	<a href="../myplace/bookreport.do" >독서</a>
+			                </li>
+			                <li >
+			                	<a href="../myplace/develop.do" >개발공간</a>
+			                </li>
+			                <li >
+			                	<a href="../myplace/coding.do" >코딩테스트</a>
 			                </li>
                 		</ul>
                 	</li>

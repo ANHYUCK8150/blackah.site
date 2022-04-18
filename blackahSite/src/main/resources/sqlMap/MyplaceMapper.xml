@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blackah.site.service.dao.MyplaceDao">
+	<insert id="insertBook">
+		insert into bookreport set
+			brSubject = #{brSubject}
+			,brState = #{brState}
+			,brContent = #{brContent}
+			,brImage = #{brImage}
+			,brRegDT = now()
+	</insert>
+	
+	<update id="updateBook">
+		update bookreport set
+			brSubject = #{brSubject}
+			,brState = #{brState}
+			,brContent = #{brContent}
+			<if test="brImage != 'UPDATE'">
+				,brImage = #{brImage}			
+			</if>
+		where brIdx = #{brIdx}
+	</update>
+	
+	<select id="mybookList" resultType="com.blackah.site.vo.MyBookVO">
+		select
+			brIdx
+			,brSubject
+			,brState
+			,brContent
+			,brImage
+			,brRegDT
+		from
+			bookreport
+		<if test="brIdx != ''">
+			where brIdx = #{brIdx}
+		</if>
+	</select>
+</mapper>

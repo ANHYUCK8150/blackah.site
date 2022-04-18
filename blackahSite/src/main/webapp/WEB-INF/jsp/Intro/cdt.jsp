@@ -317,7 +317,7 @@
 			
 			var result = "";
 			$.ajax({
-	            url: "solution.do",
+	            url: "/myplace/solution.do",
 	            type: "POST",
 	            data: {
 	            	"solutionMode" : "MaxNum"
@@ -346,7 +346,7 @@
 			
 			var result = "";
 			$.ajax({
-	            url: "solution.do",
+	            url: "/myplace/solution.do",
 	            type: "POST",
 	            ascyn:false,
 	            data: {
@@ -375,7 +375,7 @@
 			
 			var result = "";
 			$.ajax({
-	            url: "solution.do",
+	            url: "/myplace/solution.do",
 	            type: "POST",
 	            data: {
 	            	"solutionMode" : "decimal"

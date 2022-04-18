@@ -1,12 +1,9 @@
 package com.blackah.site.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
 
 import org.springframework.stereotype.Controller;
@@ -14,34 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.blackah.site.config.APIClass;
-
 @Controller
 public class CoddingTestContoller {
 	
-	@RequestMapping("intro/cdt.do")
+	@RequestMapping("myplace/coding.do")
 	public String cdt() {
 		return "Intro/cdt";
 	}
 	
-	@RequestMapping("intro/restAPI.do")
-	@ResponseBody
-	public Object restAPI(@RequestParam(value="cattleNo", required=false)String cattleNo) throws UnsupportedEncodingException {
-		
-		APIClass apiVO = new APIClass();
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("dates", "20120720");
-		map.put("lcode", "12");
-		map.put("mcode", "1209");
-		map.put("scode", "");
-		
-		Object result = apiVO.response(map);
-		
-		return result;
-	}
-	
-	@RequestMapping("intro/solution.do")
+	@RequestMapping("myplace/solution.do")
 	@ResponseBody
 	public String solution(@RequestParam(value="solutionMode", required=false)String solutionMode
 			,@RequestParam(value="number[]", required=false)String[] number

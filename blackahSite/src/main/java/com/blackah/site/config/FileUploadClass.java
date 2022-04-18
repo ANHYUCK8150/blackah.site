@@ -10,8 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadClass {
 	private static final String PREFIX_URL ="upload/";
-	
-	public String restore(MultipartFile multipartFile, HttpServletRequest request) {
+	public String restore(MultipartFile multipartFile) {
 		String url = null;
 		
 		try {
@@ -23,8 +22,8 @@ public class FileUploadClass {
 			//서버에 저장 할 파일 이름
 			String saveFileName = genSavefileName(extName);
 			
-			String root_path = request.getSession().getServletContext().getRealPath("/");  
-			
+			//String root_path = request.getSession().getServletContext().getRealPath("/"); 
+			String root_path = System.getProperty("user.dir")+"/src/main/resources/static/";
 			System.out.println("originFilename :" + originFilename);
 			System.out.println("extName :" + extName);
 			System.out.println("size :" + size);
