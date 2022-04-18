@@ -2,28 +2,47 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
-<script type="text/javascript">	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">	
 		$(document).ready(function(){
 			
-			CKEDITOR.replace( 'brContent', { filebrowserImageUploadUrl: '../uploadIMG.jsp' 
-				, height:'400'
+			CKEDITOR.replace( 'diContent', { filebrowserImageUploadUrl: '../uploadIMG.jsp' 
+				, height:'600'
 				, readOnly:true
 			});
 			
 			$("#SubmitButton").click(function(){
-				location.href="book_reg.do?brIdx=" + $("#brIdx").val();
+				location.href="develop_reg.do?diIdx=" + $("#diIdx").val();
 			});
 			
 			$("#CancelButton").click(function(){
-				location.href="bookreport.do";
+				location.href="develop.do";
 			});
 			
-			var CheckState = '<c:out value="${bookList.brState }" />';
+			var CheckTech = '<c:out value="${developList.diTech }" />';
 			
-			if(CheckState == "Y"){
-				$("#brState_1").prop("checked",true);
-			}	
+			if(CheckTech != ""){
+				var TechArr = new Array();
+				
+				TechArr = CheckTech.split(",");
+				
+				for(var i=0;i<TechArr.length;i++){
+					$("input[name=diTech_chk]").each(function(e){
+						var item = $(this).val();
+						
+						if(item == TechArr[i]){
+							$(this).prop("checked",true);
+						}
+					});
+				}
+				
+			}		
 			
 			
 		});
@@ -33,10 +52,10 @@
 	    <div class="container">
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <h2>독서</h2>
+	                <h2>나의공간</h2>
 	                <ul class="breadcrumb">
 	                    <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
-	                    <li class="breadcrumb-item active">독서</li>
+	                    <li class="breadcrumb-item active">개발공간</li>
 	                </ul>
 	            </div>
 	        </div>
@@ -48,7 +67,7 @@
 	        <div class="row">
 	        	<div class="col-lg">
 		        	<form id="regForm" enctype="multipart/form-data">
-						<input type="hidden" id="brIdx" name="brIdx" value="${bookList.brIdx }">
+						<input type="hidden" id="diIdx" name="diIdx" value="${developList.diIdx }">
 						<table class="rq_table">
 							<colgroup>
 								<col style="width:15%;">
@@ -59,32 +78,26 @@
 							<tbody>
 								<tr>
 									<th scope="row" class="thead">
-										<label>도서명</label>
+										<label>글제목</label>
 									</th>
 									<td colspan="3">
-										<label>${bookList.brSubject }</label>
+										<label>${developList.diSubject }</label>
 									</td>
 								</tr>        
 								<tr>
 									<th scope="row" class="thead">
-										<label>상태</label><label class="th_input_css"></label>
+										<label>테크</label><label class="th_input_css"></label>
 									</th>
 									<td colspan="3">
 										<ul class="checkBox floatBox">
-											<li style="float:left; margin-right:20px;">
-												<input type="checkbox" id="brState_1" name="brState_chk" value="완료" style="cursor:default;" disabled>
-												<label style="cursor:default;" for="brState_1">독서완료</label>
-											</li>
+											<c:forEach items="${skillList }" var="skillList">
+												<li style="float:left; margin-right:20px;">
+													<input type="checkbox" id="diTech_${skillList.sklIdx }" name="diTech_chk" value="${skillList.sklNM }" style="cursor:default;" disabled>
+													<label style="cursor:default;" for="diTech_${skillList.sklIdx }">${skillList.sklNM }</label>
+												</li>
+											</c:forEach>
 										</ul>
-										<input type="hidden" id="brState" name="brState" value="">
-									</td>               
-								</tr>
-								<tr>
-									<th>
-										<label>이미지</label>
-									</th>
-									<td colspan="3">
-										<img  class="uploadImagePreview" id="imageView" width="300" height="300" src="${path}/${bookList.brImage }">
+										<input type="hidden" id="diTech" name="diTech" value="">
 									</td>
 								</tr>
 								<tr>
@@ -92,7 +105,7 @@
 										<label>내용</label>
 									</th>
 									<td colspan="3">
-										<textarea id="brContent" name="brContent" rows="30">${bookList.brContent }</textarea>
+										<textarea id="diContent" name="diContent" rows="40">${developList.diContent }</textarea>
 									</td>
 								</tr>
 							</tbody>
@@ -112,3 +125,6 @@
 	        </div>
 	    </div>
 	</div>
+	
+</body>
+</html>

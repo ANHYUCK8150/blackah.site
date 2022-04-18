@@ -106,5 +106,6 @@
 	
 	<select id="skillList" resultType="com.blackah.site.vo.SkillVO">
 		select * from skilllist
+		where sklParent = '1'
 	</select>
 </mapper>

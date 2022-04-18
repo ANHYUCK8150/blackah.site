@@ -35,4 +35,94 @@
 			where brIdx = #{brIdx}
 		</if>
 	</select>
+	
+	
+	
+	<!-- #######################################
+				개발 공간 쿼리
+		 #######################################  -->
+	<select id="developListCnt" resultType="string">
+		select
+			count(diIdx)
+		from 
+			developinfo
+		where 1=1
+			<if test="searchSkill[0] != 'ALL'">
+				and
+				<foreach item="arr1" collection="searchSkill" open="(" separator=" or " close=")">
+					 diTech like concat('%',#{arr1},'%')
+			  	</foreach>
+			</if>
+			
+		  	<if test="searchText != null">
+		  		and diSubject like CONCAT('%',#{searchText},'%')
+		  	</if>
+	</select>
+	
+	<select id="developList" resultType="com.blackah.site.vo.DevelopVO">
+		select
+			*
+		from (
+			select
+				@ROWNUM := @ROWNUM + 1 AS dno
+				, p.*
+			from 
+				developinfo p, (SELECT @ROWNUM := 0 ) TMP
+			where 1=1
+			<if test="searchSkill[0] != 'ALL'">
+				and
+				<foreach item="arr1" collection="searchSkill" open="(" separator=" or " close=")">
+					 diTech like concat('%',#{arr1},'%')
+			  	</foreach>
+			</if>
+			
+		  	<if test="searchText != null">
+		  		and diSubject like CONCAT('%',#{searchText},'%')
+		  	</if>
+		) a
+		where
+			dno between #{start} and #{end}
+		order by dno
+	</select>
+	
+	<insert id="insertDevelop">
+		insert into developinfo set
+			diTech = #{diTech}
+			,diSubject = #{diSubject}
+			,diContent = #{diContent}
+			,diRegDT = now()
+	</insert>
+	
+	<update id="updateDevelop">
+		update developinfo set
+			diTech = #{diTech}
+			,diSubject = #{diSubject}
+			,diContent = #{diContent}
+		where 1=1
+			and diIdx = #{diIdx}
+	</update>
+	
+	<delete id="deleteDevelop">
+		delete from developinfo
+		where diIdx in 
+			<foreach item="arr" collection="array"
+			      open="(" separator="," close=")">
+			        #{arr}
+		  	</foreach>
+	</delete>
+	
+	<select id="GetDevelop" resultType="com.blackah.site.vo.DevelopVO">
+		select
+			*
+		from
+			developinfo
+		where 1=1
+			and diIdx = #{diIdx}
+	</select>
+	
+	<select id="skillList" resultType="com.blackah.site.vo.SkillVO">
+		select * from skilllist
+		where sklParent = '2'
+	</select>
+	
 </mapper>
