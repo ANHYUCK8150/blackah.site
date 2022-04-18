@@ -45,11 +45,13 @@ public class MyplaceController {
 	}
 	
 	@RequestMapping("myplace/book_reg.do")
-	public String book_reg(@RequestParam String brIdx, Model model, HttpSession session){
-		
-		List<MyBookVO> list = myplaceService.mybookList(brIdx);
-		
-		MyBookVO myBookVO = list.get(0);
+	public String book_reg(@RequestParam(value="brIdx", required=false)String brIdx, Model model, HttpSession session){
+		MyBookVO myBookVO = new MyBookVO();
+		if(brIdx != null) {
+			List<MyBookVO> list = myplaceService.mybookList(brIdx);
+			
+			myBookVO = list.get(0);
+		}
 		
 		model.addAttribute("bookList", myBookVO);
 		
