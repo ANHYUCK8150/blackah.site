@@ -4,13 +4,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadClass {
 	private static final String PREFIX_URL ="upload/";
-	public String restore(MultipartFile multipartFile, HttpServletRequest request) {
+	public String restore(MultipartFile multipartFile, HttpServletRequest request, HttpSession session) {
 		String url = null;
 		
 		try {
@@ -22,7 +24,10 @@ public class FileUploadClass {
 			//서버에 저장 할 파일 이름
 			String saveFileName = genSavefileName(extName);
 			
-			String root_path = request.getSession().getServletContext().getRealPath("/");
+			ServletContext context = session.getServletContext();
+			String root_path = context.getRealPath(request.getContextPath());
+			
+			//String root_path = request.getSession().getServletContext().getRealPath("/");
 			//String root_path = System.getProperty("user.dir")+"/src/main/resources/static/";
 			System.out.println("originFilename :" + originFilename);
 			System.out.println("extName :" + extName);

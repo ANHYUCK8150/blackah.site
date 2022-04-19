@@ -10,4 +10,5 @@ public class MyBookVO {
 	private String brContent;
 	private String brImage;
 	private String brRegDT;
+	
 }

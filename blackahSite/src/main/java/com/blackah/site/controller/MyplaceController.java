@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,13 +33,19 @@ public class MyplaceController {
 	
 	@Resource(name="myplaceService")
 	private MyplaceService myplaceService;
+	
 	/*------------------------------------------
 	 * 독서 start
 	 -------------------------------------------*/
 	@RequestMapping("myplace/bookreport.do")
 	public String bookreport(Model model) {
-		
 		List<MyBookVO> list = myplaceService.mybookList("");
+		
+		for(MyBookVO book : list) {
+			if(book.getBrImage().equals("")) {
+				book.setBrImage("upload/noimages.jpg");
+			}
+		}
 		
 		model.addAttribute("bookList", list);
 		
@@ -72,6 +80,7 @@ public class MyplaceController {
 	public String book_modify(@RequestParam Map<String,Object> params
 			, @RequestParam("brImage") MultipartFile file
 			, HttpServletRequest request
+			, HttpSession session
 			,  HttpServletResponse response) throws Exception {
 		
 		int sqlResult = 0;
@@ -86,7 +95,7 @@ public class MyplaceController {
 		try {
 			FileUploadClass fileUpload = new FileUploadClass();
 			
-			String url = fileUpload.restore(file,request);
+			String url = fileUpload.restore(file,request,session);
 		    
 			myBookVO.setBrImage(url);
 		    
