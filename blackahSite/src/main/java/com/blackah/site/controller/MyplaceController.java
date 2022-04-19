@@ -71,6 +71,7 @@ public class MyplaceController {
 	@PostMapping("myplace/book_modify.do")
 	public String book_modify(@RequestParam Map<String,Object> params
 			, @RequestParam("brImage") MultipartFile file
+			, HttpServletRequest request
 			,  HttpServletResponse response) throws Exception {
 		
 		int sqlResult = 0;
@@ -85,7 +86,7 @@ public class MyplaceController {
 		try {
 			FileUploadClass fileUpload = new FileUploadClass();
 			
-			String url = fileUpload.restore(file);
+			String url = fileUpload.restore(file,request);
 		    
 			myBookVO.setBrImage(url);
 		    

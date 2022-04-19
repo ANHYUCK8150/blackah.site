@@ -157,7 +157,7 @@ public class ProjectController {
 		try {
 			FileUploadClass fileUpload = new FileUploadClass();
 			
-			String url = fileUpload.restore(file);
+			String url = fileUpload.restore(file,request);
 		    
 		    projectVO.setPbImage(url);
 		    
