@@ -138,8 +138,6 @@ public class ProjectController {
 	@RequestMapping("project/modify.do")
 	public String ProjectModify(@RequestParam Map<String,Object> params
 			, @RequestParam("pbImage") MultipartFile file
-			,  HttpServletRequest request
-			, HttpSession session
 			) {
 		
 		String resultUrl = "redirect:list.do";
@@ -158,7 +156,7 @@ public class ProjectController {
 		try {
 			FileUploadClass fileUpload = new FileUploadClass();
 			
-			String url = fileUpload.restore(file,request,session);
+			String url = fileUpload.restore(file);
 		    
 		    projectVO.setPbImage(url);
 		    
