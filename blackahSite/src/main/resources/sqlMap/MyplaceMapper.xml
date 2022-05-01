@@ -82,7 +82,7 @@
 		) a
 		where
 			dno between #{start} and #{end}
-		order by dno desc
+		order by dno desc 
 	</select>
 	
 	<insert id="insertDevelop">
