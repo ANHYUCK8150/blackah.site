@@ -7,13 +7,13 @@
 	<div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
             <li class="text-center">
-                <img src="/images/Main1.png" alt="">
+                <img src="/images/Main1.jpg" alt="">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>안녕하세요.</strong></h1>
-                            <p class="m-b-40">홈페이지에 오신것을 환영합니다.</p>
-                            <p><a class="btn hvr-hover" href="../project/list.do">프로젝트 보기</a></p>
+                            <p class="m-b-40">개발자 안혁입니다.</p>
+                            <p><a class="btn hvr-hover" href="../intro/introduce.do">인사말 보기</a></p>
                         </div>
                     </div>
                 </div>
@@ -23,8 +23,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>안녕하세요.</strong></h1>
-                            <p class="m-b-40">홈페이지에 오신것을 환영합니다.</p>
+                            <h1 class="m-b-20"><strong>프로젝트</strong></h1>
+                            <p class="m-b-40">프로젝트를 소개합니다.</p>
                             <p><a class="btn hvr-hover" href="../project/list.do">프로젝트 보기</a></p>
                         </div>
                     </div>
@@ -35,9 +35,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>안녕하세요.</strong></h1>
-                            <p class="m-b-40">홈페이지에 오신것을 환영합니다.</p>
-                            <p><a class="btn hvr-hover" href="../project/list.do">프로젝트 보기</a></p>
+                            <h1 class="m-b-20"><strong>API 활용</strong></h1>
+                            <p class="m-b-40">경락가격정보서비스, 도서검색</p>
+                            <p><a class="btn hvr-hover" href="../api/fruit.do">API 활용 보기</a></p>
                         </div>
                     </div>
                 </div>

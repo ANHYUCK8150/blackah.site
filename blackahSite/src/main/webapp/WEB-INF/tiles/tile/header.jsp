@@ -51,7 +51,7 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                 	<li class="dropdown">
-                		<a href="../intro/introduce.do" class="nav-link dropdown-toggle" data-toggle="dropdown">소개하기</a>
+                		<a href="../intro/introduce.do" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">소개하기</a>
                 		<ul class="dropdown-menu">
                 			<li ><a href="../intro/introduce.do" >인사말</a></li>
 			                <li ><a href="../intro/resume.do" >이력서</a></li>
@@ -59,7 +59,7 @@
                 	</li>
                     <li class="nav-item" id="menu_about"><a class="nav-link" href="../project/list.do">프로젝트</a></li>
                     <li class="dropdown">
-                		<a href="../board/board.do?op=notice" class="nav-link dropdown-toggle" data-toggle="dropdown">게시글</a>
+                		<a href="../board/board.do?op=notice" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">게시글</a>
                 		<ul class="dropdown-menu">
                 			<li >
 			                	<a href="../board/board.do?op=notice" >공지사항</a>
@@ -70,7 +70,7 @@
                 		</ul>
                 	</li>
                 	<li class="dropdown">
-                		<a href="../api/fruit.do" class="nav-link dropdown-toggle" data-toggle="dropdown">API활용</a>
+                		<a href="../api/fruit.do" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">API활용</a>
                 		<ul class="dropdown-menu">
                 			<li >
 			                	<a href="../api/fruit.do" >경락가격정보서비스</a>
@@ -81,7 +81,7 @@
                 		</ul>
                 	</li>
                 	<li class="dropdown">
-                		<a href="../myplace/bookreport.do" class="nav-link dropdown-toggle" data-toggle="dropdown">나의공간</a>
+                		<a href="../myplace/bookreport.do" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">나의공간</a>
                 		<ul class="dropdown-menu">
                 			<li >
 			                	<a href="../myplace/bookreport.do" >독서</a>
