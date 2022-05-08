@@ -34,4 +34,26 @@ public class AuthController {
 		}
 		
 	}
+	
+	@PostMapping("/register")
+	public String register(@RequestParam String username, @RequestParam String password) {
+		String msg = "";
+		
+		MemberVO memberVO = new MemberVO();
+		memberVO.setMbID(username);
+		memberVO.setMbPW(password);
+		memberVO.setMbNM(username);
+		memberVO.setMbPhone("010-0000-0000");
+		memberVO.setMbEmail(username);
+		
+		int chk = memberService.insertMember(memberVO);
+		
+		if(chk > 0) {
+			msg = "회원가입 완료";
+		}else {
+			msg = "실패";
+		}
+		
+		return msg;
+	}
 }
