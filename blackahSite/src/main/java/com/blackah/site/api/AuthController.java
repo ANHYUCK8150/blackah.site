@@ -21,7 +21,7 @@ public class AuthController {
 	private final PasswordEncoder encoder;
 	
 	@PostMapping("/login")
-	public MemberVO login(Map<String, Object> map) {
+	public MemberVO login(@RequestParam Map<String, Object> map) {
 		
 		MemberVO memberVO = memberService.checkID(map.get("username").toString());
 		
@@ -38,7 +38,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/register")
-	public String register(Map<String, Object> map) {
+	public String register(@RequestParam Map<String, Object> map) {
 		String msg = "";
 		
 		MemberVO memberVO = new MemberVO();
