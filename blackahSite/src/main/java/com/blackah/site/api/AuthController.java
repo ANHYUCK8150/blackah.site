@@ -1,5 +1,7 @@
 package com.blackah.site.api;
 
+import java.util.Map;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +21,12 @@ public class AuthController {
 	private final PasswordEncoder encoder;
 	
 	@PostMapping("/login")
-	public MemberVO login(@RequestParam String username, @RequestParam String password) {
+	public MemberVO login(Map<String, Object> map) {
 		
-		MemberVO memberVO = memberService.checkID(username);
+		MemberVO memberVO = memberService.checkID(map.get("username").toString());
 		
 		if(memberVO != null) {
-			if(encoder.matches(password, memberVO.getMbPW().toString())) {
+			if(encoder.matches(map.get("password").toString(), memberVO.getMbPW().toString())) {
 				return memberVO;
 			}else {
 				return null;
@@ -36,15 +38,15 @@ public class AuthController {
 	}
 	
 	@PostMapping("/register")
-	public String register(@RequestParam String username, @RequestParam String password) {
+	public String register(Map<String, Object> map) {
 		String msg = "";
 		
 		MemberVO memberVO = new MemberVO();
-		memberVO.setMbID(username);
-		memberVO.setMbPW(password);
-		memberVO.setMbNM(username);
+		memberVO.setMbID(map.get("username").toString());
+		memberVO.setMbPW(map.get("password").toString());
+		memberVO.setMbNM(map.get("username").toString());
 		memberVO.setMbPhone("010-0000-0000");
-		memberVO.setMbEmail(username);
+		memberVO.setMbEmail("tset@email.com");
 		
 		int chk = memberService.insertMember(memberVO);
 		
