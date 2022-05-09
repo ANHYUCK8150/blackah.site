@@ -79,10 +79,11 @@
 		  	<if test="searchText != null">
 		  		and diSubject like CONCAT('%',#{searchText},'%')
 		  	</if>
+		  	order by diIdx desc
 		) a
 		where
 			dno between #{start} and #{end}
-		order by dno desc 
+		order by dno
 	</select>
 	
 	<insert id="insertDevelop">
