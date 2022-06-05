@@ -84,7 +84,7 @@
 										<label>이미지</label>
 									</th>
 									<td colspan="3">
-										<img  class="uploadImagePreview" id="imageView" width="300" height="300" src="${path}/${bookList.brImage }">
+										<img  class="uploadImagePreview" id="imageView" width="300" height="300" src="${bookList.brImage }">
 									</td>
 								</tr>
 								<tr>

@@ -29,7 +29,7 @@
 						              <div class="box-img-hover">
 						                  <div class="type-lb">
 						                  </div>
-						                  <img src="${path}/${bookList.brImage }" class="img-fluid" alt="Image" style="height:180px;">
+						                  <img src="${bookList.brImage }" class="img-fluid" alt="Image" style="height:180px;">
 						                  <div class="mask-icon">
 						                      <ul>
 						                          <li><a href="/myplace/book_reg.do?brIdx=${bookList.brIdx }" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>

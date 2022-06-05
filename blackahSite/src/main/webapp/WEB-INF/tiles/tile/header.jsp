@@ -54,7 +54,7 @@
                 		<a href="../intro/introduce.do" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">소개하기</a>
                 		<ul class="dropdown-menu">
                 			<li ><a href="../intro/introduce.do" >인사말</a></li>
-			                <li ><a href="../intro/resume.do" >이력서</a></li>
+			                <!-- <li ><a href="../intro/resume.do" >이력서</a></li>  -->
                 		</ul>
                 	</li>
                     <li class="nav-item" id="menu_about"><a class="nav-link" href="../project/list.do">프로젝트</a></li>
